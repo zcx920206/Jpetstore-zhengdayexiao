@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.thoughtworks.jpetstore.persistence.AccountMapper">
+
+  <select id="getAccountByUsername" resultType="Account">
+    SELECT
+          ACCOUNT.USERID USERNAME,
+          ACCOUNT.EMAIL,
+          ACCOUNT.FIRSTNAME,
+          ACCOUNT.LASTNAME,
+          ACCOUNT.STATUS,
+          ACCOUNT.ADDR1 AS address1,
+          ACCOUNT.ADDR2 AS address2,
+          ACCOUNT.CITY,
+          ACCOUNT.STATE,
+          ACCOUNT.ZIP,
+          ACCOUNT.COUNTRY,
+          ACCOUNT.PHONE
+    FROM ACCOUNT
+    WHERE ACCOUNT.USERID = #{userName}
+  </select>
+
+    <select id="getstudentclass" resultMap="StudentRm">
+        SELECT * FROM  student WHERE id=#{id}
+    </select>
+
+    <resultMap id="StudentRm" type="Student">
+        <collection property="coursea" javaType="ArrayList" column="id" ofType="Course" select="selectclasses" />
+    </resultMap>
+    <select id="selectclasses" resultType="Course">
+        SELECT * FROM  course WHERE course.id=#{id}
+    </select>
+
+</mapper>
