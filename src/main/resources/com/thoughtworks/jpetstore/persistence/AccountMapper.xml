@@ -22,15 +22,14 @@
     WHERE ACCOUNT.USERID = #{userName}
   </select>
 
-    <select id="getstudentclass" resultMap="StudentRm">
-        SELECT * FROM  student WHERE id=#{id}
-    </select>
-
-    <resultMap id="StudentRm" type="Student">
-        <collection property="coursea" javaType="ArrayList" column="id" ofType="Course" select="selectclasses" />
-    </resultMap>
-    <select id="selectclasses" resultType="Course">
-        SELECT * FROM  course WHERE course.id=#{id}
-    </select>
+    <!--<select id="getstudentclass" resultMap="StudentRm">-->
+        <!--SELECT * FROM  student WHERE id=#{id}-->
+    <!--</select>-->
+    <!--<resultMap id="StudentRm" type="Student">-->
+        <!--<collection property="coursea" javaType="ArrayList" column="id" ofType="Course" select="selectclasses" />-->
+    <!--</resultMap>-->
+    <!--<select id="selectclasses" resultType="Course">-->
+        <!--SELECT * FROM  course WHERE course.id=#{id}-->
+    <!--</select>-->
 
 </mapper>

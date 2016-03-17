@@ -1,10 +1,10 @@
 package com.thoughtworks.jpetstore.service;
 
 
+import com.thoughtworks.jpetstore.domain.Course;
 import com.thoughtworks.jpetstore.domain.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.thoughtworks.jpetstore.domain.Account;
 import com.thoughtworks.jpetstore.persistence.AccountMapper;
@@ -27,6 +27,9 @@ public class AccountService {
   public int addStudent(Student student){
     return accountMapper.addStudent(student);
   }
+  public int addCourse(Course course){
+    return accountMapper.addCourse(course);
+  }
 
   public int deleteStudentById(int id){
     return accountMapper.deleteStudentById(id);
@@ -43,4 +46,10 @@ public class AccountService {
   public List<Student> getAllStudent(){
     return accountMapper.getAllStudent();
   }
+
+  public List<Course> getAllCourse(){
+    return accountMapper.getAllCourse();
+  }
+  public List<Student> getStudent(String cname){return accountMapper.getStudent(cname);}
+  public List<Student> getPassstudent(String cname){return accountMapper.getPassstudent(cname);}
 }
